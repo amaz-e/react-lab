@@ -11,7 +11,7 @@ function App() {
     let mailComment = '';
     if (email.length <=5){mailComment = <p>Za krótki mail</p>}
     if (email.length > 5){mailComment = <p>Dobra długosc maila</p>}
-    if (email.length > 12){mailComment = <p>Dlugi adres maila</p>}
+    if (email.length > 15){mailComment = <p>Dlugi adres maila</p>}
 
   return (
       <div>
@@ -19,6 +19,7 @@ function App() {
           <h2>Twój mail to: {email}</h2>
           {mailComment}
           <input type="text" value={email} onChange={handleChange}/>
+          <button onClick={() => alert(email)}>Alert!</button>
       </div>
   );
 }
