@@ -20,8 +20,8 @@ function App() {
     if (isAuthenticated) {
         content =
         <div>
-        <p>Cześć: {email}</p>
-        <button onClick={() => setIsAuthenticated(false)}>Wyloguj</button>
+            <p>Cześć: {email}</p>
+            <button onClick={() => setIsAuthenticated(false)}>Wyloguj</button>
         </div>
     }
 
