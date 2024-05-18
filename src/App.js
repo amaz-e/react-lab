@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from "react";
 import "milligram";
+import LoginForm from "./LoginForm";
 
 function App() {
     const [email, setEmail] = useState('');
@@ -30,6 +31,7 @@ function App() {
     if (isAuthenticated) {
         content =
         <div>
+            <h1>Dashboard</h1>
             <p>Cześć: {email}</p>
             <button onClick={logout}>Wyloguj</button>
         </div>
@@ -38,6 +40,7 @@ function App() {
   return (
       <div>
           {content}
+          <LoginForm onLogin={login}/>
       </div>
   );
 }
