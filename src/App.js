@@ -10,7 +10,8 @@ function App() {
 
     let mailComment = '';
     if (email.length <=5){mailComment = <p>Za krótki mail</p>}
-    if (email.length > 5){mailComment = <p>Dobra długosc maila</p>}
+    if (12 > email.length > 5 ){mailComment = <p>Dobra długosc maila</p>}
+    if (email.length >= 12){mailComment = <p>Dlugi adres maila</p>}
 
   return (
       <div>
