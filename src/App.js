@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from "react";
+import "milligram";
 
 function App() {
     const [email, setEmail] = useState('');
@@ -10,18 +11,27 @@ function App() {
 
     let content;
 
+    function login(){
+        setIsAuthenticated(true);
+    }
+
+    function logout(){
+        setIsAuthenticated(false);
+        setEmail('');
+    }
+
     if (!isAuthenticated) {
         content = <div>
             <h1>System logowania</h1>
             <input type="text" value={email} onChange={handleChange} placeholder="adres mail" />
-            <button onClick={() => setIsAuthenticated(true)}>Zaloguj</button>
+            <button onClick={login}>Zaloguj</button>
         </div>
     }
     if (isAuthenticated) {
         content =
         <div>
             <p>Cześć: {email}</p>
-            <button onClick={() => setIsAuthenticated(false)}>Wyloguj</button>
+            <button onClick={logout}>Wyloguj</button>
         </div>
     }
 
