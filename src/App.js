@@ -2,24 +2,32 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
-
-    const [email, setEmail] = useState('mail@mail.pl');
+    const [email, setEmail] = useState('');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     function handleChange(event){
         setEmail(event.target.value);
     }
 
-    let mailComment = '';
-    if (email.length <=5){mailComment = <p>Za krótki mail</p>}
-    if (email.length > 5){mailComment = <p>Dobra długosc maila</p>}
-    if (email.length > 15){mailComment = <p>Dlugi adres maila</p>}
+    let content;
+
+    if (!isAuthenticated) {
+        content = <div>
+            <h1>System logowania</h1>
+            <input type="text" value={email} onChange={handleChange} placeholder="adres mail" />
+            <button onClick={() => setIsAuthenticated(true)}>Zaloguj</button>
+        </div>
+    }
+    if (isAuthenticated) {
+        content =
+        <div>
+        <p>Cześć: {email}</p>
+        <button onClick={() => setIsAuthenticated(false)}>Wyloguj</button>
+        </div>
+    }
 
   return (
       <div>
-        <h1>System do zapisów na zajęcia</h1>
-          <h2>Twój mail to: {email}</h2>
-          {mailComment}
-          <input type="text" value={email} onChange={handleChange}/>
-          <button onClick={() => alert(email)}>Alert!</button>
+          {content}
       </div>
   );
 }
